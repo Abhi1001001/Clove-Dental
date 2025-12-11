@@ -1,4 +1,5 @@
 <h1>Clove Dental Landing Page</h1>
+<a href="https://clove-dantal-sample.netlify.app/">https://clove-dantal-sample.netlify.app/</a>
 <p>This project is a simple and responsive landing page created for <strong>Clove Dental</strong> using HTML, CSS, and JavaScript. It presents the clinic’s services and information in a clean layout with smooth interactions.</p>
 <h2>Features</h2>
 <ul>
