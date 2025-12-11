@@ -20,7 +20,7 @@
     <!-- Owl Carousel JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <style>
-      html{
+      html {
         scroll-behavior: smooth;
       }
       body {
@@ -744,6 +744,19 @@
         display: none;
         overflow: hidden;
       }
+      .stats-section .owl-carousel .owl-stage-outer {
+        max-height: 98px !important;
+      }
+      .zoom {
+        opacity: 0;
+        transform: scale(0.9);
+        transition: 0.5s ease;
+      }
+
+      .zoom.show {
+        opacity: 1;
+        transform: scale(1);
+      }
 
       /* Responsive */
       @media (max-width: 992px) {
@@ -753,6 +766,7 @@
         .choose-container {
           justify-content: center;
           text-align: center;
+          align-items: center;
         }
 
         .left-list p {
@@ -895,13 +909,13 @@
         </div>
 
         <!-- Buttons -->
-        <div class="right-buttons">
+        <div class="right-buttons zoom">
           <a href="#" class="book-btn">
             <img src="./images/appointment-icon.png" alt="appointment-icon" />
             Book Appointment
           </a>
 
-          <a href="tel:9856589510" class="phone-btn">
+          <a href="tel:9856589510" class="phone-btn zoom">
             <img src="./images/phone-icon.png" alt="phone" />
             985-6589-510
           </a>
@@ -913,7 +927,7 @@
     <section class="hero-parent">
       <div class="hero">
         <!-- Left Floating Text Box -->
-        <div class="left-box">
+        <div class="left-box zoom">
           <h2>Painless Root Canal Treatment in Delhi</h2>
           <p>Expert RCT. Zero Pain. Right Here in Delhi.</p>
           <a href="#" class="btn">
@@ -965,27 +979,27 @@
     <!-- Stats Carousel ---------------- -->
     <section class="stats-section">
       <div id="stats-carousel" class="owl-carousel owl-theme">
-        <div class="stat-box">
+        <div class="item stat-box">
           <img src="./images/Clinics.png" alt="Clinics" />
           <span><span class="highlight">600+</span> Clinics</span>
         </div>
 
-        <div class="stat-box">
+        <div class="item stat-box">
           <img src="./images/dentists.png" alt="Dentists" />
           <span><span class="highlight">1300+</span> Dentists</span>
         </div>
 
-        <div class="stat-box">
+        <div class="item stat-box">
           <img src="./images/Happy Patients.png" alt="Happy Patients" />
           <span><span class="highlight">30 L+</span> Happy Patients</span>
         </div>
 
-        <div class="stat-box">
+        <div class="item stat-box">
           <img src="./images/tooth.png" alt="Ortho Cases" />
           <span><span class="highlight">35K+</span> Ortho Cases</span>
         </div>
 
-        <div class="stat-box">
+        <div class="item stat-box">
           <img src="./images/Implant.png" alt="implants placed" />
           <span><span class="highlight">55K+</span> Implants Placed</span>
         </div>
@@ -1034,7 +1048,7 @@
         <div id="root-canal" class="owl-carousel owl-theme">
           <!-- Card 1 -->
           <div class="card item">
-            <img src="./images/image 453.png" alt="image453" />
+            <img class="zoom" src="./images/image 453.png" alt="image453" />
             <div class="card-content">
               <h3>Root Canal Treatment</h3>
               <p>Ideal for infected or damaged tooth</p>
@@ -1056,7 +1070,7 @@
 
           <!-- Card 2 -->
           <div class="card item">
-            <img src="./images/image 454.png" alt="image454" />
+            <img class="zoom" src="./images/image 454.png" alt="image454" />
             <div class="card-content">
               <h3>Re-Root Canal Treatment</h3>
               <p>Ideal issues that persist or recur after</p>
@@ -1179,7 +1193,7 @@
         </div>
 
         <!-- Right image -->
-        <div class="right-img">
+        <div class="right-img zoom">
           <img src="./images/Rectangle 27.png" alt="image" />
         </div>
       </div>
@@ -1355,7 +1369,7 @@
       });
       $("#patient-carousel").owlCarousel({
         loop: true,
-        autoplay: false,
+        autoplay: true,
         autoplayTimeout: 3000,
         autoplayHoverPause: false,
         dots: false,
@@ -1370,7 +1384,7 @@
 
       $("#root-canal").owlCarousel({
         loop: true,
-        autoplay: true,
+        autoplay: false,
         autoplayTimeout: 3000,
         autoplayHoverPause: false,
         dots: false,
@@ -1443,6 +1457,18 @@
           e.target.value = e.target.value.replace(/[^A-Za-z]/g, "");
         });
       });
+
+      const zoom = document.querySelectorAll(".zoom");
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+          }
+        });
+      });
+
+      zoom.forEach((el) => observer.observe(el));
     </script>
   </body>
 </html>
