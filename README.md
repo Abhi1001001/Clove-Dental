@@ -35,5 +35,3 @@ while JavaScript is used for simple interactions like toggles and scrolling effe
   <li>Images and content</li>
   <li>Additional sections like testimonials or FAQs</li>
 </ul>
-<h2>License</h2>
-<p>You may use or modify this project freely for personal learning or portfolio work.</p>
